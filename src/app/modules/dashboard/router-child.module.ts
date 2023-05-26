@@ -6,7 +6,7 @@ import { CarreraTecnicaComponent } from '../carrera-tecnica/components/carrera-t
 const childroutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'home',component: HomeComponent},
-    {path: 'CarreraTecnica',component: CarreraTecnicaComponent}
+    {path: 'carreraTecnica',component: CarreraTecnicaComponent}
 ]
 
 

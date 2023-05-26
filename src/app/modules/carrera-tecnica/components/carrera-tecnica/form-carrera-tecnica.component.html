@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>
+  Carrera Tecnica 
+</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="carreraTecnicaForm">
+        <div class="">
+            <mat-form-field>
+                <input formControlName="carreraTecnica" matInput placeholder="Carrera Tecnica" required />
+            </mat-form-field>
+        </div>
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button color="primary" (click)="onSave()" >
+        <mat-icon>save</mat-icon>Guardar
+    </button>
+    <button mat-button color="primary" (click)="onCancel()" >
+        <mat-icon>cancel</mat-icon>Cancelar
+    </button>
+</mat-dialog-actions>
+
+
