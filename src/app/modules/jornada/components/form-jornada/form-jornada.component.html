@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>
+    Jornada
+  </h2>
+  <mat-dialog-content>
+    <form [formGroup]="jornadaForm">
+      <div class="jornada-container">
+        <mat-form-field>
+          <input formControlName="jornada" matInput placeholder="Jornada" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="descripcion" matInput placeholder="Descripción" required>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button color="primary" (click)="onSave()">
+      <mat-icon>save</mat-icon> Guardar
+    </button>
+    <button mat-button color="primary" (click)="onCancel()">
+      <mat-icon>cancel</mat-icon> Cancelar
+    </button>
+  </mat-dialog-actions>

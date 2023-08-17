@@ -1,0 +1,89 @@
+<mat-card>
+    <h2 class="alinear">Listado de jornadas</h2>
+    <mat-card-header>
+      <div>
+        <mat-form-field hintLabel="Buscar categoria" appearance="fill">
+          <mat-label>Buscar jornada</mat-label>
+          <input matInput #input />
+        </mat-form-field>
+      </div>
+    </mat-card-header>
+    <mat-card-header>
+      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+        <ul fxLayout="row" fxLayoutGap="20px">
+          <li>
+            <button
+              *ngIf="authService.hasRole('ROLE_ADMIN')"
+              mat-raised-button
+              color="primary"
+              (click)="openFormJornada()"
+            >
+              Agregar jornada
+            </button>
+          </li>
+        </ul>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table class="mat-cell" [dataSource]="dataSource">
+        <ng-container matColumnDef="jornadaId">
+          <th mat-header-cell *matHeaderCellDef>CODIGO</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="element">
+              {{ element.jornadaId }}
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="nombreCorto">
+          <th mat-header-cell *matHeaderCellDef>JORNADA</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container>
+              {{ element.nombreCorto }}
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef>DESCRIPCION</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container>
+              {{ element.descripcion }}
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>ACCIONES</th>
+          <td mat-cell *matCellDef="let element; let i = index">
+            <button
+              *ngIf="authService.hasRole('ROLE_ADMIN')"
+              mat-icon-button
+              color="accent"
+              (click)="
+                editJornada(
+                  element.jornadaId,
+                  element.nombreCorto,
+                  element.descripcion
+                )
+              "
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              *ngIf="authService.hasRole('ROLE_ADMIN')"
+              mat-icon-button
+              color="accent"
+              (click)="deleteJornada(element.jornadaId)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </mat-card-content>
+  </mat-card>
+  

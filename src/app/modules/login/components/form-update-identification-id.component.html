@@ -1,0 +1,37 @@
+<div class="parent">
+  <h2 mat-dialog-title>Actualizacion de datos</h2>
+  <mat-dialog-content>
+    <form [formGroup]="formUpdateIdentificationId">
+      <div class="form-container">
+        <mat-form-field>
+          <input
+            formControlName="email"
+            matInput
+            placeholder="Email"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div class="form-container">
+        <mat-form-field>
+          <input
+            formControlName="identificationId"
+            matInput
+            placeholder="Identificador"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div>
+      <button mat-button color="primary" (click)="save()">
+        <mat-icon>save</mat-icon>Guardar
+      </button>
+      <button mat-button color="primary" (click)="cancel()">
+        <mat-icon>cancel</mat-icon>Cancelar
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

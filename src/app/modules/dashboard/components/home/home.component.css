@@ -1,0 +1,39 @@
+html,
+body {
+    height: 100%;
+    text-align: center;
+}
+
+.example-card {
+    max-width: 400px;
+    margin: 1%;
+}
+
+.example-header-image {
+    background-image: url('../../../../../assets/img/clave2.png');
+    background-size: cover;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box div {
+    width: 100px;
+    height: 100px;
+}
+
+.banner-text {
+    padding: 30px;
+    background-color: #f8b412;
+    text-align: center;
+    color: #303F9F;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.text-white {
+    color: white
+}

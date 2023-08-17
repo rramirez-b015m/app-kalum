@@ -1,0 +1,109 @@
+<mat-card>
+    <h2 class="alinear">Listado de resultados de examen de admisión</h2>
+    <mat-card-header>
+      <div>
+        <mat-form-field hintLabel="Buscar categoria" appearance="fill">
+          <mat-label>Buscar resultado examen admisión</mat-label>
+          <input matInput #input />
+        </mat-form-field>
+      </div>
+    </mat-card-header>
+    <mat-card-header>
+      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+        <ul fxLayout="row" fxLayoutGap="20px">
+          <li>
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="openFormResultadoExamenAdmision()"
+            >
+              Agregar resultado
+            </button>
+          </li>
+        </ul>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table class="mat-cell" [dataSource]="dataSource">
+        <ng-container matColumnDef="number">
+          <th mat-header-cell *matHeaderCellDef class="text-center">No.</th>
+          <td
+            mat-cell
+            *matCellDef="let element; let i = index"
+            class="text-center"
+          >
+            <ng-container *ngIf="element">
+              {{ i + 1 }}
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="noExpediente">
+          <th mat-header-cell *matHeaderCellDef>NO EXPEDIENTE</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container>
+              {{ element.noExpediente }}
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="anio">
+          <th mat-header-cell *matHeaderCellDef>ANIO</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container>
+              {{ element.anio }}
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef>DESCRIPCION</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container>
+              {{ element.descripcion }}
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="nota">
+          <th mat-header-cell *matHeaderCellDef>NOTA</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container>
+              {{ element.nota }}
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>ACCIONES</th>
+          <td mat-cell *matCellDef="let element; let i = index">
+            <button
+              *ngIf="authService.hasRole('ROLE_ADMIN')"
+              mat-icon-button
+              color="accent"
+              (click)="
+                editResultadoExamenAdmision(
+                  element.noExpediente,
+                  element.anio,
+                  element.descripcion,
+                  element.nota
+                )
+              "
+            >
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+            <button
+              *ngIf="authService.hasRole('ROLE_ADMIN')"
+              mat-icon-button
+              color="accent"
+              (click)="deleteResultadoExamenAdmision(element.noExpediente)"
+            >
+              <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </mat-card-content>
+  </mat-card>
+  

@@ -22,6 +22,7 @@ export class FormCarreraTecnicaComponent {
     private carreraTecnicaService: CarreraTecnicaService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    console.log(data);
     this.carreraTecnicaForm = this.fb.group({
       carreraTecnica: ['', Validators.required],
     });
@@ -33,7 +34,7 @@ export class FormCarreraTecnicaComponent {
 
   updateForm(data: any) {
     this.carreraTecnicaForm = this.fb.group({
-      CarreraTecnica: [data.nombre, Validators.required],
+      carreraTecnica: [data.nombre, Validators.required],
     });
   }
 
@@ -44,7 +45,7 @@ export class FormCarreraTecnicaComponent {
 
     if (this.estadoFormulario === 'Actualizar') {
       this.carreraTecnicaService
-        .updateCarreraTecnica(data, this.data.carreraId)
+        .updateCarreraTecnica(data, this.data.carreraid)
         .subscribe({
           next: (data) => this.dialogRef.close(1),
           error: (error) => this.dialogRef.close(2),
@@ -65,6 +66,6 @@ export class FormCarreraTecnicaComponent {
   }
 
   onCancel() {
-    this.dialogRef.close(3);
+    this.dialogRef.close(2);
   }
 }

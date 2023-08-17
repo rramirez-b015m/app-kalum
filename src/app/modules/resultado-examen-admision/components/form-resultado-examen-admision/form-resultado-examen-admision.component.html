@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>Resultado Examen Admisión</h2>
+<mat-dialog-content>
+  <form [formGroup]="resultadoExamenAdmisionForm">
+    <div class="resultado-examen-admision-container">
+      <mat-form-field>
+        <input
+          formControlName="noExpediente"
+          matInput
+          placeholder="No. Expediente"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          formControlName="anio"
+          matInput
+          placeholder="Año"
+          required
+          min="2023"
+          max="2050"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          formControlName="descripcion"
+          matInput
+          placeholder="Descripción"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          formControlName="nota"
+          matInput
+          placeholder="Nota"
+          type="number"
+          min="0"
+          max="100"
+          required
+        />
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="onSave()">
+    <mat-icon>save</mat-icon> Guardar
+  </button>
+  <button mat-button color="primary" (click)="onCancel()">
+    <mat-icon>cancel</mat-icon> Cancelar
+  </button>
+</mat-dialog-actions>

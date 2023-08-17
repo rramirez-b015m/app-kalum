@@ -38,11 +38,14 @@
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let element; let i = index">
-          <button mat-icon-button color="accent" (click)="editCarreraTecnica(element.carreraid, element.nombre)" >
+          <button *ngIf="authservice.hasRole('ROLE_ADMIN')"  mat-icon-button color="accent" (click)="editCarreraTecnica(element.carreraid, element.nombre)" >
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
-          <button mat-icon-button color="accent" (click)="deleteCarreraTecnica(element.carreraid)">
+          <button *ngIf="authservice.hasRole('ROLE_ADMIN')"  mat-icon-button color="accent" (click)="deleteCarreraTecnica(element.carreraid)">
             <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="openFormRegisterAspirante(element.carreraid, element.nombre)">
+            <mat-icon aria-label="Asignar">assignment</mat-icon>
           </button>
         </td>
       </ng-container>
